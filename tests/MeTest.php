@@ -3,7 +3,6 @@
 namespace ChatWork\Api\Client\Tests;
 
 use ChatWork\Api\Client\Me;
-use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 class MeTest extends TestCase
