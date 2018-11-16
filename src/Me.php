@@ -3,6 +3,7 @@
 namespace ChatWork\Api\Client;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -34,7 +35,7 @@ final class Me
     /**
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMyProfileAsync()
+    public function getMyProfileAsync(): PromiseInterface
     {
         return $this->httpClient->requestAsync('GET', 'me', [
             'headers' => [
@@ -46,7 +47,7 @@ final class Me
     /**
      * @return ResponseInterface
      */
-    public function getMyProfile()
+    public function getMyProfile(): ResponseInterface
     {
         return $this->getMyProfileAsync()->wait();
     }
