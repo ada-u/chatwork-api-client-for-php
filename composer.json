@@ -1,0 +1,39 @@
+{
+    "name": "ada-u/chatwork-api-client-for-php",
+    "description": "ChatWork API for PHP",
+    "keywords": ["chatwork", "api", "http", "client"],
+    "license": "MIT",
+    "homepage": "https://github.com/ada-u/chatwork-api-client-for-php",
+    "support": {
+        "issues": "https://github.com/ada-u/chatwork-api-client-for-php/issues",
+        "source": "https://github.com/ada-u/chatwork-api-client-for-php/laravel/framework"
+    },
+    "authors": [
+        {
+            "name": "Yuta Adachi",
+            "email": "yuta@adachi.life"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChatWork\\Api\\Client\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ChatWork\\Api\\Client\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
