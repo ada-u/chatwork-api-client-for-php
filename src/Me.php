@@ -2,7 +2,8 @@
 
 namespace ChatWork\Api\Client;
 
-use GuzzleHttp\ClientInterface;
+use ChatWork\Api\Client\Foundation\HttpClient;
+use GuzzleHttp\Client;
 use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -11,25 +12,18 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class Me
 {
-
     /**
-     * @var ClientInterface
+     * @var HttpClient
      */
-    private $httpClient;
+    private $client;
 
     /**
-     * @var string
-     */
-    private $token;
-
-    /**
-     * @param ClientInterface $httpClient
      * @param string $token
+     * @param HttpClient $client
      */
-    public function __construct(ClientInterface $httpClient, string $token)
+    public function __construct(string $token, HttpClient $client = null)
     {
-        $this->httpClient = $httpClient;
-        $this->token = $token;
+        $this->client = $client ?: new HttpClient($token);
     }
 
     /**
@@ -37,11 +31,7 @@ final class Me
      */
     public function getMyProfileAsync(): PromiseInterface
     {
-        return $this->httpClient->requestAsync('GET', 'me', [
-            'headers' => [
-                'X-ChatWorkToken' => $this->token
-            ]
-        ]);
+        return $this->client->requestAsync('GET', 'me');
     }
 
     /**
