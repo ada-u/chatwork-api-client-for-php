@@ -6,7 +6,7 @@ use ChatWork\Api\Client\Endpoint\My\My;
 use ChatWork\Api\Client\Foundation\Credential\ChatWorkToken;
 use PHPUnit\Framework\TestCase;
 
-class MyTest extends TestCase
+final class MyTest extends TestCase
 {
 
     /**

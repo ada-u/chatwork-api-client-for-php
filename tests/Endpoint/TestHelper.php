@@ -1,22 +1,20 @@
 <?php
 
-namespace ChatWork\Api\Client\Tests\Endpoint\Me;
+namespace ChatWork\Api\Client\Tests\Endpoint;
 
 use ChatWork\Api\Client\Endpoint\Me\Me;
 use ChatWork\Api\Client\Foundation\Credential\ChatWorkToken;
-use PHPUnit\Framework\TestCase;
 
-final class MeTest extends TestCase
+trait TestHelper
 {
-
     /**
-     * @test
+     * @return int
      */
-    public function getMe()
+    public function getMyAccountId(): int
     {
         $me = new Me(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
         $response = $me->getMyProfile();
 
-        $this->assertSame(200, $response->getStatusCode());
+        return (int) \GuzzleHttp\json_decode($response->getBody()->getContents())->account_id;
     }
 }
