@@ -3,6 +3,7 @@
 namespace ChatWork\Api\Client\Tests;
 
 use ChatWork\Api\Client\Contacts;
+use ChatWork\Api\Client\Foundation\Credential\ChatWorkToken;
 use PHPUnit\Framework\TestCase;
 
 class ContactsTest extends TestCase
@@ -13,7 +14,7 @@ class ContactsTest extends TestCase
      */
     public function getContacts()
     {
-        $me = new Contacts(getenv('CHATWORK_TOKEN'));
+        $me = new Contacts(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
         $response = $me->getContacts();
 
 

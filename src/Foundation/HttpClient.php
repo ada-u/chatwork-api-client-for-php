@@ -2,6 +2,7 @@
 
 namespace ChatWork\Api\Client\Foundation;
 
+use ChatWork\Api\Client\Foundation\Credential\Credential;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Promise\PromiseInterface;
@@ -14,15 +15,16 @@ final class HttpClient
     private $httpClient;
 
     /**
-     * @param string $token
+     * @todo oauth2
+     * @param Credential $credential
      */
-    public function __construct(string $token)
+    public function __construct(Credential $credential)
     {
         $this->httpClient = new Client([
             'base_uri' => 'https://api.chatwork.com/v2/',
             'timeout'  => 5.0,
             'headers' => [
-                'X-ChatWorkToken' => $token
+                'X-ChatWorkToken' => $credential->getValue()
             ]
         ]);
     }

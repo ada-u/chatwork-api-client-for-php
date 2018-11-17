@@ -2,6 +2,7 @@
 
 namespace ChatWork\Api\Client\Tests;
 
+use ChatWork\Api\Client\Foundation\Credential\ChatWorkToken;
 use ChatWork\Api\Client\My;
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +14,7 @@ class MyTest extends TestCase
      */
     public function getMyStatusStatus()
     {
-        $my = new My(getenv('CHATWORK_TOKEN'));
+        $my = new My(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
         $response = $my->getMyStatus();
 
         $this->assertSame(200, $response->getStatusCode());
@@ -24,7 +25,7 @@ class MyTest extends TestCase
      */
     public function getMyTasks()
     {
-        $my = new My(getenv('CHATWORK_TOKEN'));
+        $my = new My(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
         $response = $my->getMyTasks();
 
         $this->assertTrue(
