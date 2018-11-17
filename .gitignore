@@ -15,3 +15,4 @@ Thumbs.db
 
 # PHP
 /phpunit.xml
+/.php_cs.cache

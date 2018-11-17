@@ -21,5 +21,5 @@ install:
   - travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest
 
 script:
-   - echo "hi"
+   -  ./vendor/bin/php-cs-fixer fix --dry-run --diff
 #  - vendor/bin/phpunit
