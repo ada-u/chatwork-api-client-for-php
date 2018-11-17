@@ -37,6 +37,21 @@ final class RoomsTest extends TestCase
         $response = $rooms->createRoom($body);
 
         $this->assertSame(200, $response->getStatusCode());
+
+        return \GuzzleHttp\json_decode($response->getBody()->getContents())->room_id;
+    }
+
+    /**
+     * @depends createRoom
+     * @test
+     * @param int $roomId
+     */
+    public function getRoom(int $roomId)
+    {
+        $rooms = new Rooms(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
+        $response = $rooms->getRoom($roomId);
+
+        $this->assertSame(200, $response->getStatusCode());
     }
 
 }

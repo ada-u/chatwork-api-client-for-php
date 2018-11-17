@@ -63,4 +63,22 @@ final class Rooms
         return $this->createRoomAsync($body)->wait();
     }
 
+    /**
+     * @param int $roomId
+     * @return PromiseInterface
+     */
+    public function getRoomAsync(int $roomId): PromiseInterface
+    {
+        return $this->client->requestAsync('GET', sprintf('rooms/%d', $roomId));
+    }
+
+    /**
+     * @param int $roomId
+     * @return ResponseInterface
+     */
+    public function getRoom(int $roomId): ResponseInterface
+    {
+        return $this->getRoomAsync($roomId)->wait();
+    }
+
 }
