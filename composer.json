@@ -1,6 +1,6 @@
 {
     "name": "ada-u/chatwork-api-client-for-php",
-    "description": "ChatWork API for PHP",
+    "description": "ChatWork API client for PHP",
     "keywords": ["chatwork", "api", "http", "client"],
     "license": "MIT",
     "homepage": "https://github.com/ada-u/chatwork-api-client-for-php",
