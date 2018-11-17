@@ -1,6 +1,6 @@
 <?php
 
-namespace ChatWork\Api\Client;
+namespace ChatWork\Api\Client\Endpoint\Me;
 
 use ChatWork\Api\Client\Foundation\Credential\Credential;
 use ChatWork\Api\Client\Foundation\HttpClient;
@@ -27,7 +27,7 @@ final class Me
     }
 
     /**
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
     public function getMyProfileAsync(): PromiseInterface
     {

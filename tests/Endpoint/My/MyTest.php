@@ -1,9 +1,9 @@
 <?php
 
-namespace ChatWork\Api\Client\Tests;
+namespace ChatWork\Api\Client\Tests\Endpoint\My;
 
+use ChatWork\Api\Client\Endpoint\My\My;
 use ChatWork\Api\Client\Foundation\Credential\ChatWorkToken;
-use ChatWork\Api\Client\My;
 use PHPUnit\Framework\TestCase;
 
 class MyTest extends TestCase

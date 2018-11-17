@@ -1,6 +1,6 @@
 <?php
 
-namespace ChatWork\Api\Client;
+namespace ChatWork\Api\Client\Endpoint\My;
 
 use ChatWork\Api\Client\Foundation\Credential\Credential;
 use ChatWork\Api\Client\Foundation\HttpClient;
@@ -27,7 +27,7 @@ final class My
     }
 
     /**
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
     public function getMyStatusAsync(): PromiseInterface
     {
@@ -35,7 +35,7 @@ final class My
     }
 
     /**
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
     public function getMyTasksAsync(): PromiseInterface
     {

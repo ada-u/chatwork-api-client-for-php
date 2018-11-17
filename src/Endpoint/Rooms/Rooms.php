@@ -1,16 +1,13 @@
 <?php
 
-namespace ChatWork\Api\Client;
+namespace ChatWork\Api\Client\Endpoint\Rooms;
 
 use ChatWork\Api\Client\Foundation\Credential\Credential;
 use ChatWork\Api\Client\Foundation\HttpClient;
 use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @package ChatWork\Api\Client
- */
-final class Contacts
+final class Rooms
 {
     /**
      * @var HttpClient
@@ -26,20 +23,21 @@ final class Contacts
         $this->client = $client ?: new HttpClient($credential);
     }
 
+
     /**
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
-    public function getContactsAsync(): PromiseInterface
+    public function getRoomsAsync(): PromiseInterface
     {
-        return $this->client->requestAsync('GET', 'contacts');
+        return $this->client->requestAsync('GET', 'rooms');
     }
 
     /**
      * @return ResponseInterface
      */
-    public function getContacts(): ResponseInterface
+    public function getRooms(): ResponseInterface
     {
-        return $this->getContactsAsync()->wait();
+        return $this->getRoomsAsync()->wait();
     }
 
 }
