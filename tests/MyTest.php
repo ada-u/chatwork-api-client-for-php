@@ -29,7 +29,7 @@ class MyTest extends TestCase
 
         $this->assertTrue(
             in_array($response->getStatusCode(), [200, 204], true),
-            'chatwork api responds with 204 status code if you dont have any task'
+            'chatwork api responds with 204 status code if you dont have any tasks'
         );
     }
 }

@@ -11,7 +11,7 @@ class MeTest extends TestCase
     /**
      * @test
      */
-    public function getMeAsyncTest()
+    public function getMe()
     {
         $me = new Me(getenv('CHATWORK_TOKEN'));
         $response = $me->getMyProfile();
