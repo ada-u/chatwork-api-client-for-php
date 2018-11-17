@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * @package ChatWork\Api\Client
  */
-final class Me
+final class My
 {
     /**
      * @var HttpClient
@@ -28,17 +28,33 @@ final class Me
     /**
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMyProfileAsync(): PromiseInterface
+    public function getMyStatusAsync(): PromiseInterface
     {
-        return $this->client->requestAsync('GET', 'me');
+        return $this->client->requestAsync('GET', 'my/status');
+    }
+
+    /**
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMyTasksAsync(): PromiseInterface
+    {
+        return $this->client->requestAsync('GET', 'my/tasks/');
     }
 
     /**
      * @return ResponseInterface
      */
-    public function getMyProfile(): ResponseInterface
+    public function getMyStatus(): ResponseInterface
     {
-        return $this->getMyProfileAsync()->wait();
+        return $this->getMyStatusAsync()->wait();
+    }
+
+    /**
+     * @return ResponseInterface
+     */
+    public function getMyTasks(): ResponseInterface
+    {
+        return $this->getMyTasksAsync()->wait();
     }
 
 }
