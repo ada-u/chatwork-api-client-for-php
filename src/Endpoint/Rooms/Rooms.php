@@ -3,6 +3,7 @@
 namespace ChatWork\Api\Client\Endpoint\Rooms;
 
 use ChatWork\Api\Client\Endpoint\Rooms\RequestBody\CreateRoomRequestBody;
+use ChatWork\Api\Client\Endpoint\Rooms\RequestBody\UpdateRoomRequestBody;
 use ChatWork\Api\Client\Foundation\Credential\Credential;
 use ChatWork\Api\Client\Foundation\HttpClient;
 use GuzzleHttp\Promise\PromiseInterface;
@@ -79,6 +80,31 @@ final class Rooms
     public function getRoom(int $roomId): ResponseInterface
     {
         return $this->getRoomAsync($roomId)->wait();
+    }
+
+    /**
+     * @param int $roomId
+     * @param UpdateRoomRequestBody $body
+     * @return PromiseInterface
+     */
+    public function updateRoomAsync(int $roomId, UpdateRoomRequestBody $body): PromiseInterface
+    {
+        return $this->client->requestAsync(
+            'PUT',
+            sprintf('rooms/%d', $roomId), [
+                'form_params' => $body->normalize()
+            ]
+        );
+    }
+
+    /**
+     * @param int $roomId
+     * @param UpdateRoomRequestBody $body
+     * @return ResponseInterface
+     */
+    public function updateRoom(int $roomId, UpdateRoomRequestBody $body): ResponseInterface
+    {
+        return $this->updateRoomAsync($roomId, $body)->wait();
     }
 
 }
