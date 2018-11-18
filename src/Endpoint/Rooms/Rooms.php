@@ -7,7 +7,6 @@ use ChatWork\Api\Client\Endpoint\Rooms\RequestBody\UpdateRoomRequestBody;
 use ChatWork\Api\Client\Foundation\Credential\Credential;
 use ChatWork\Api\Client\Foundation\HttpClient;
 use GuzzleHttp\Promise\PromiseInterface;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * @package ChatWork\Api\Client\Endpoint\Rooms
@@ -31,24 +30,16 @@ final class Rooms
     /**
      * @return PromiseInterface
      */
-    public function getRoomsAsync(): PromiseInterface
+    public function getRooms(): PromiseInterface
     {
         return $this->client->requestAsync('GET', 'rooms');
-    }
-
-    /**
-     * @return ResponseInterface
-     */
-    public function getRooms(): ResponseInterface
-    {
-        return $this->getRoomsAsync()->wait();
     }
 
     /**
      * @param CreateRoomRequestBody $body
      * @return PromiseInterface
      */
-    public function createRoomAsync(CreateRoomRequestBody $body): PromiseInterface
+    public function createRoom(CreateRoomRequestBody $body): PromiseInterface
     {
         return $this->client->requestAsync('POST', 'rooms', [
             'form_params' => $body->normalize()
@@ -56,30 +47,12 @@ final class Rooms
     }
 
     /**
-     * @param CreateRoomRequestBody $body
-     * @return ResponseInterface
-     */
-    public function createRoom(CreateRoomRequestBody $body): ResponseInterface
-    {
-        return $this->createRoomAsync($body)->wait();
-    }
-
-    /**
      * @param int $roomId
      * @return PromiseInterface
      */
-    public function getRoomAsync(int $roomId): PromiseInterface
+    public function getRoom(int $roomId): PromiseInterface
     {
         return $this->client->requestAsync('GET', sprintf('rooms/%d', $roomId));
-    }
-
-    /**
-     * @param int $roomId
-     * @return ResponseInterface
-     */
-    public function getRoom(int $roomId): ResponseInterface
-    {
-        return $this->getRoomAsync($roomId)->wait();
     }
 
     /**
@@ -87,7 +60,7 @@ final class Rooms
      * @param UpdateRoomRequestBody $body
      * @return PromiseInterface
      */
-    public function updateRoomAsync(int $roomId, UpdateRoomRequestBody $body): PromiseInterface
+    public function updateRoom(int $roomId, UpdateRoomRequestBody $body): PromiseInterface
     {
         return $this->client->requestAsync(
             'PUT',
@@ -95,16 +68,6 @@ final class Rooms
                 'form_params' => $body->normalize()
             ]
         );
-    }
-
-    /**
-     * @param int $roomId
-     * @param UpdateRoomRequestBody $body
-     * @return ResponseInterface
-     */
-    public function updateRoom(int $roomId, UpdateRoomRequestBody $body): ResponseInterface
-    {
-        return $this->updateRoomAsync($roomId, $body)->wait();
     }
 
 }

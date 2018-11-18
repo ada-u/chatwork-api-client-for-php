@@ -5,7 +5,6 @@ namespace ChatWork\Api\Client\Endpoint\My;
 use ChatWork\Api\Client\Foundation\Credential\Credential;
 use ChatWork\Api\Client\Foundation\HttpClient;
 use GuzzleHttp\Promise\PromiseInterface;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * @package ChatWork\Api\Client
@@ -29,7 +28,7 @@ final class My
     /**
      * @return PromiseInterface
      */
-    public function getMyStatusAsync(): PromiseInterface
+    public function getMyStatus(): PromiseInterface
     {
         return $this->client->requestAsync('GET', 'my/status');
     }
@@ -37,25 +36,9 @@ final class My
     /**
      * @return PromiseInterface
      */
-    public function getMyTasksAsync(): PromiseInterface
+    public function getMyTasks(): PromiseInterface
     {
         return $this->client->requestAsync('GET', 'my/tasks/');
-    }
-
-    /**
-     * @return ResponseInterface
-     */
-    public function getMyStatus(): ResponseInterface
-    {
-        return $this->getMyStatusAsync()->wait();
-    }
-
-    /**
-     * @return ResponseInterface
-     */
-    public function getMyTasks(): ResponseInterface
-    {
-        return $this->getMyTasksAsync()->wait();
     }
 
 }

@@ -15,7 +15,7 @@ final class ContactsTest extends TestCase
     public function getContacts()
     {
         $me = new Contacts(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
-        $response = $me->getContacts();
+        $response = $me->getContacts()->wait();
 
 
         $this->assertTrue(

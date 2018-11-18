@@ -15,7 +15,7 @@ final class MeTest extends TestCase
     public function getMe()
     {
         $me = new Me(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
-        $response = $me->getMyProfile();
+        $response = $me->getMyProfile()->wait();
 
         $this->assertSame(200, $response->getStatusCode());
     }

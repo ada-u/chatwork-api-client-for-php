@@ -20,7 +20,7 @@ final class RoomsTest extends TestCase
     public function getRooms()
     {
         $rooms = new Rooms(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
-        $response = $rooms->getRooms();
+        $response = $rooms->getRooms()->wait();
 
         $this->assertSame(200, $response->getStatusCode());
     }
@@ -36,7 +36,7 @@ final class RoomsTest extends TestCase
             'description',
             [$this->getMyAccountId()]
         );
-        $response = $rooms->createRoom($body);
+        $response = $rooms->createRoom($body)->wait();
 
         $this->assertSame(200, $response->getStatusCode());
 
@@ -52,7 +52,7 @@ final class RoomsTest extends TestCase
     public function getRoom(int $roomId)
     {
         $rooms = new Rooms(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
-        $response = $rooms->getRoom($roomId);
+        $response = $rooms->getRoom($roomId)->wait();
 
         $this->assertSame(200, $response->getStatusCode());
 
@@ -72,7 +72,7 @@ final class RoomsTest extends TestCase
             'description',
             RoomIcon::BEER
         );
-        $response = $rooms->updateRoom($roomId, $body);
+        $response = $rooms->updateRoom($roomId, $body)->wait();
 
         $this->assertSame(200, $response->getStatusCode());
     }

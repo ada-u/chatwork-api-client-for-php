@@ -15,7 +15,7 @@ final class MyTest extends TestCase
     public function getMyStatusStatus()
     {
         $my = new My(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
-        $response = $my->getMyStatus();
+        $response = $my->getMyStatus()->wait();
 
         $this->assertSame(200, $response->getStatusCode());
     }
@@ -26,7 +26,7 @@ final class MyTest extends TestCase
     public function getMyTasks()
     {
         $my = new My(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
-        $response = $my->getMyTasks();
+        $response = $my->getMyTasks()->wait();
 
         $this->assertTrue(
             in_array($response->getStatusCode(), [200, 204], true),

@@ -13,7 +13,7 @@ trait TestHelper
     public function getMyAccountId(): int
     {
         $me = new Me(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
-        $response = $me->getMyProfile();
+        $response = $me->getMyProfile()->wait();
 
         return (int) \GuzzleHttp\json_decode($response->getBody()->getContents())->account_id;
     }
