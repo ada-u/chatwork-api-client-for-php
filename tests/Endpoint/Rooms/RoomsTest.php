@@ -63,6 +63,7 @@ final class RoomsTest extends TestCase
      * @depends getRoom
      * @test
      * @param int $roomId
+     * @return int
      */
     public function updateRoom(int $roomId)
     {
@@ -75,6 +76,21 @@ final class RoomsTest extends TestCase
         $response = $rooms->updateRoom($roomId, $body)->wait();
 
         $this->assertSame(200, $response->getStatusCode());
+
+        return (int) \GuzzleHttp\json_decode($response->getBody()->getContents())->room_id;
+    }
+
+    /**
+     * @depends updateRoom
+     * @test
+     * @param int $roomId
+     */
+    public function deleteRoom(int $roomId)
+    {
+        $rooms = new Rooms(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
+        $response = $rooms->deleteRoom($roomId)->wait();
+
+        $this->assertSame(204, $response->getStatusCode());
     }
 
 }

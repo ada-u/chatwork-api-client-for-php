@@ -70,4 +70,20 @@ final class Rooms
         );
     }
 
+    /**
+     * @param int $roomId
+     * @return PromiseInterface
+     */
+    public function deleteRoom(int $roomId): PromiseInterface
+    {
+        return $this->client->requestAsync(
+            'DELETE',
+            sprintf('rooms/%d', $roomId), [
+                'form_params' => [
+                    'action_type' => 'delete'
+                ]
+            ]
+        );
+    }
+
 }
