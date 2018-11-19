@@ -93,4 +93,21 @@ final class RoomsTest extends TestCase
         $this->assertSame(204, $response->getStatusCode());
     }
 
+    /**
+     * @test
+     * @return int
+     */
+    public function getMembers(): int
+    {
+        $roomId = $this->prepareRoom();
+        $rooms = new Rooms(new ChatWorkToken(getenv('CHATWORK_TOKEN')));
+        $response = $rooms->getMembers($roomId)->wait();
+
+        $this->assertSame(200, $response->getStatusCode());
+
+        $this->cleanRoom($roomId);
+
+        return $roomId;
+    }
+
 }

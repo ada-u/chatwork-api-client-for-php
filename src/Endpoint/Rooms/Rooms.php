@@ -86,4 +86,16 @@ final class Rooms
         );
     }
 
+    /**
+     * @param int $roomId
+     * @return PromiseInterface
+     */
+    public function getMembers(int $roomId): PromiseInterface
+    {
+        return $this->client->requestAsync(
+            'GET',
+            sprintf('rooms/%d/members', $roomId)
+        );
+    }
+
 }
